@@ -8,9 +8,9 @@ exports.userSignupValidator = (req, res, next) => {
     })
     .matches(/.+\@.+\..+/)
     .withMessage('Email must contain @ and . like this : name@doamin.com')
+  req.check('password', 'Password is required').notEmpty()
   req
-    .check('password', 'Password is required')
-    .notEmpty()
+    .check('password')
     .isLength({ min: 6 })
     .withMessage('Password must have at least 6 charactor')
     .matches(/\d/)

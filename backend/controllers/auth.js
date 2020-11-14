@@ -25,19 +25,15 @@ exports.signin = (req, res) => {
   User.findOne({ email }, (error, user) => {
     // If error or no user found
     if (error || !user) {
-      res
-        .status(400)
-        .json({
-          error: 'The user with this email does not exist. Please Signup.'
-        })
+      res.status(400).json({
+        error: 'The user with this email does not exist. Please Signup.',
+      })
     }
 
     // if user found make sure that email and password are match
     // create authentificate method in user model
     if (!user.authentificate(password)) {
-      return res
-        .status(401)
-        .json({ error: 'Email and password are not match' })
+      return res.status(401).json({ error: 'Email and password dont match' })
     }
     // Generate a signed token with user id and secret
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET)
@@ -60,9 +56,9 @@ exports.signout = (req, res) => {
 // ******* FOR PROTECTED ROUTES *********
 exports.requireSignin = expressJwt({
   secret: process.env.JWT_SECRET,
-  algorithms: [ 'HS256' ],
+  algorithms: ['HS256'],
   // added later
-  userProperty: 'auth'
+  userProperty: 'auth',
 })
 
 // ******* CHECK IF USER IS AUTH ********
