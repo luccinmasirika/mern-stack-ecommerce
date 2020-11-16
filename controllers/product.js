@@ -155,10 +155,11 @@ exports.productList = (req, res) => {
  * Show all products by category
  */
 
-exports.productListRealated = (req, res) => {
+exports.productListRelated = (req, res) => {
   let limit = req.query.limit ? parseInt(req.query.limit) : 6
   Product.find({ _id: { $ne: req.product }, category: req.product.category })
     .limit(limit)
+    .populate('category', '_id name')
     .exec((error, productListRealeáted) => {
       if (error) {
         return res.status(400).json({ error: 'Products not found' })

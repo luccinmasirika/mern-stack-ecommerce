@@ -8,7 +8,7 @@ const {
   update,
   remove,
   productList,
-  productListRealated,
+  productListRelated,
   productsCategories,
   listBySearch,
   listSearch,
@@ -27,7 +27,7 @@ router.delete(
 )
 
 router.get('/products', productList)
-router.get('/products/related/:productId', productListRealated)
+router.get('/products/related/:productId', productListRelated)
 router.get('/products/categories', productsCategories)
 router.get('/product/photo/:productId', productPhoto)
 

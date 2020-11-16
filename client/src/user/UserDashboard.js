@@ -8,6 +8,8 @@ import Container from '@material-ui/core/Container'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 import UpdateIcon from '@material-ui/icons/Update'
 import Divider from '@material-ui/core/Divider'
+import CardContent from '@material-ui/core/CardContent'
+import CardMaterial from '@material-ui/core/Card'
 
 import Layout from '../core/Layout'
 import { getPurchaseHistory } from './apiUser'
@@ -24,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(2),
   },
   title: { padding: theme.spacing(2) },
+  container: { marginBottom: theme.spacing(2), background: '#fafaff' },
   list: {},
 }))
 
@@ -69,7 +72,7 @@ const Dashboard = () => {
               </ListItem>
             </Link>
             <Divider />
-            <Link className={classes.link} to='/cart'>
+            <Link className={classes.link} to={`/profile/${isAuthenticated().user._id}`}>
               <ListItem>
                 <ListItemIcon>
                   <UpdateIcon />
@@ -120,18 +123,17 @@ const Dashboard = () => {
           <Typography variant='h6'>Purchase history</Typography>
         </div>
         <div className={classes.list}>
-          <List>
-            <ListItem>
+          <CardMaterial className={classes.container}>
+            <CardContent>
               {history.map((h, i) => {
                 return (
                   <div>
-                    <Divider />
                     {h.products.map((p, i) => {
                       return (
                         <div key={i}>
                           <ListItemText primary={`Product name: ${p.name}`} />
                           <ListItemText
-                            secondary={`Product name: ${p.price}`}
+                            secondary={`Product price: ${p.price}`}
                           />
                           <ListItemText
                             secondary={`Purchased date: ${moment(
@@ -144,8 +146,8 @@ const Dashboard = () => {
                   </div>
                 )
               })}
-            </ListItem>
-          </List>
+            </CardContent>
+          </CardMaterial>
         </div>
       </div>
     )

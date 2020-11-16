@@ -220,23 +220,25 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
   )
 
   return (
-    products.length > 0 && (
-      <CardMaterial className={classes.container}>
-        <Backdrop className={classes.backdrop} open={data.loading}>
-          <CircularProgress color='inherit' />
-        </Backdrop>
-        <CardContent>
-          <Typography variant='h5' component='h1'>
-            TOTAL: ${getTotal()}
-          </Typography>
-        </CardContent>
-        <Divider />
-        {showSuccess(data.success)}
-        {showError(data.error)}
-        {showCheckout()}
-        {handleRedirect(redirect)}
-      </CardMaterial>
-    )
+    <CardMaterial className={classes.container}>
+      <Backdrop className={classes.backdrop} open={data.loading}>
+        <CircularProgress color='inherit' />
+      </Backdrop>
+      {products.length > 0 && (
+        <div>
+          <CardContent>
+            <Typography variant='h5' component='h1'>
+              TOTAL: ${getTotal()}
+            </Typography>
+          </CardContent>
+          <Divider />
+          {showCheckout()}
+        </div>
+      )}
+      {handleRedirect(redirect)}
+      {showSuccess(data.success)}
+      {showError(data.error)}
+    </CardMaterial>
   )
 }
 

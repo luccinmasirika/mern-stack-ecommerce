@@ -182,8 +182,13 @@ const Card = ({
           </Typography>
         </CardContent>
         <CardContent>
-          <Typography variant='body2' color='textSecondary' component='p'>
-            {product.description}
+          <Typography
+            variant='body2'
+            align='justify'
+            color='textSecondary'
+            component='p'
+          >
+            {product.description.substring(0, 120)}...
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -204,9 +209,6 @@ const Card = ({
       <Divider />
       <Collapse in={expanded} timeout='auto' unmountOnExit>
         <CardContent>
-          <Typography gutterBottom variant='h6' component='h3'>
-            <b> {product.category && product.category.name}</b> category
-          </Typography>
           <Typography paragraph>
             Added on {moment(product.createdAt).fromNow()}
           </Typography>

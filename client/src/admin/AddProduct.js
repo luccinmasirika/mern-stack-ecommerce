@@ -14,6 +14,7 @@ import Layout from '../core/Layout'
 import { isAuthenticated } from '../auth'
 import { createProduct, getCategories } from './apiAdmin'
 import { Container, CssBaseline, MenuItem, Select } from '@material-ui/core'
+import { Redirect } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,13 +49,13 @@ const useStyles = makeStyles((theme) => ({
 const AddProduct = () => {
   const classes = useStyles()
   const [values, setValues] = useState({
-    name: '',
-    description: '',
+    name: 'Product',
+    description: 'Lorem Ipsum est un texte d\'espace réservé couramment utilisé dans les industries graphique, imprimée et éditoriale pour prévisualiser les mises en page et les maquettes visuelles.',
     price: '',
     categories: [],
     category: '',
     shipping: '',
-    quantity: '',
+    quantity: '14',
     photo: '',
     error: '',
     createdProduct: '',
@@ -119,6 +120,7 @@ const AddProduct = () => {
           error: data.error,
         })
       } else {
+        console.log(data)
         setValues({
           ...values,
           name: '',
@@ -146,6 +148,7 @@ const AddProduct = () => {
           style={{ display: 'none' }}
           id='upload-photo'
           name='upload-photo'
+          onChange={handleChange('photo')}
           type='file'
           accept='image/*'
         />
@@ -154,9 +157,9 @@ const AddProduct = () => {
           color='secondary'
           variant='contained'
           component='span'
+          endIcon={<AddAPhotoIcon />}
           className={clsx(classes.margin, classes.btn)}
         >
-          <AddAPhotoIcon />
           Upload post image
         </Button>
       </label>
@@ -245,6 +248,14 @@ const AddProduct = () => {
     </form>
   )
 
+  const redirectUser = () => {
+    if (redirectToProfile) {
+      if (!error) {
+        return <Redirect to='/' />
+      }
+    }
+  }
+
   const showSuccess = () => (
     <Alert severity='success'>
       <AlertTitle>Success</AlertTitle>
@@ -270,6 +281,7 @@ const AddProduct = () => {
       >
         {success && showSuccess()}
         {error && showError()}
+        {redirectUser()}
         <React.Fragment>
           <CssBaseline />
           <Container

@@ -76,6 +76,15 @@ const AdminDashboard = () => {
                 <ListItemText primary='Manage Products' />
               </ListItem>
             </Link>
+            <Divider />
+            <Link className={classes.link} to='/admin/categories'>
+              <ListItem>
+                <ListItemIcon>
+                  <Create />
+                </ListItemIcon>
+                <ListItemText primary='Manage Categories' />
+              </ListItem>
+            </Link>
           </List>
           <Divider />
         </div>

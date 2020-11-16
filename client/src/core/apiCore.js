@@ -16,6 +16,7 @@ export const getCategories = () => {
     method: 'GET',
   })
     .then((response) => {
+      console.log('category test', response)
       return response.json()
     })
     .catch((error) => console.log(error))
@@ -116,6 +117,7 @@ export const createOrder = (userId, token, createOrderData) => {
     body: JSON.stringify({ order: createOrderData }),
   })
     .then((response) => {
+      console.log('order test', response)
       return response.json()
     })
     .catch((error) => console.log(error))

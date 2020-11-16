@@ -52,6 +52,7 @@ export const getPurchaseHistory = (userId, token) => {
     },
   })
     .then((response) => {
+      console.log('history test', response)
       return response.json()
     })
     .catch((error) => console.log(error))

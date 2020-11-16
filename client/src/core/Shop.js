@@ -193,7 +193,7 @@ const Shop = () => {
             />
           </AccordionDetails>
         </Accordion>
-        <CardMaterial className={classes.container} elevation={0}>
+        <CardMaterial className={classes.container}>
           <CardContent align='center'>
             <Typography align='center' variant='h5' component='h1'>
               Products

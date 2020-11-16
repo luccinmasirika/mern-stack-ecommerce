@@ -1,29 +1,29 @@
 
 # dependencies
-/backend/node_modules
-/frontend/node_modules
-/frontend/.pnp
-/frontend/.pnp.js
+node_modules
+/clinet/node_modules
+/clinet/.pnp
+/clinet/.pnp.js
 
 # testing
-/frontend/coverage
+/clinet/coverage
 
 # production
-/frontend/build
+/clinet/build
 
 # misc
-/frontend/.DS_Store
-/frontend/.env.local
-/frontend/.env.development.local
-/frontend/.env.test.local
-/frontend/.env.production.local
-/frontend/.env
-/backend/.env
+/clinet/.DS_Store
+/clinet/.env.local
+/clinet/.env.development.local
+/clinet/.env.test.local
+/clinet/.env.production.local
+/clinet/.env
+.env
 
-/frontend/npm-debug.log*
-/frontend/yarn-debug.log*
-/frontend/yarn-error.log*
+/clinet/npm-debug.log*
+/clinet/yarn-debug.log*
+/clinet/yarn-error.log*
 
-/backend/npm-debug.log*
-/backend/yarn-debug.log*
-/backend/yarn-error.log*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
